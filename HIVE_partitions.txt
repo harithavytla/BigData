@@ -17,6 +17,9 @@ insert into table Dancing_partition partition(category='Dancing') select txnno,t
 
 Dynamic partition 
 -------------------
+
+set hive.exec.dynamic.partition.mode=nonstrict	
+
 create external table all_countries (txnno INT,txndate STRING,custno INT,amount DOUBLE,category STRING,product STRING,city STRING,state STRING,spendby STRING) PARTITIONED BY (country STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' STORED AS TEXTFILE LOCATION '/hive/data/txns_partition';
 
 insert into table US_data partition(country) select * from staging;
