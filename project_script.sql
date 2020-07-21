@@ -23,7 +23,8 @@ status_code integer(10));
 
 Load data into MySQL Table 
 ----------------------------------------------------
-load data local infile '/home/cloudera/project_1/1' into table part_file_weblog;
+ load data infile '/home/cloudera/project_1/3.csv' into table part_file_weblog FIELDS terminated by ',' LINES TERMINATED BY '\n';
+
 
 Import Data from MySQL to HDFS 
 ---------------------------------------------------
