@@ -12,10 +12,12 @@ object Spark_Gym {
  
     sc.setLogLevel("ERROR")
     
-    val data = sc.textFile("hdfs:/hive/data/txns/part-m-00000")
-    val gym_data = data.filter(x=>x.contains("Gymnastics"))
-    gym_data.saveAsTextFile("hdfs:/hive/data/txns/scala")
-   
+    val data = sc.textFile("C:///Users//bnama//Desktop//BigData_local//Data//usdata.csv")
+                 .filter(x=>x.length()>200)
+                 .flatMap(x=>x.split(","))
+                 .flatMap(x=>x.split(" "))
+                 .filter(x=>x.contains("\""))
+                 .foreach(println)
     
   }
   
